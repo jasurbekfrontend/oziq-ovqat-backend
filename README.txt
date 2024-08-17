@@ -173,4 +173,6 @@
     ```
     - **Code:** 500 Server Error
 
+    
+
 **Eslatma:** Har bir javobning holati va xato holatlari serverning qanday ishlashiga bog'liq bo'lishi mumkin. Xatoliklar yoki muvaffaqiyatli javoblar ko'rsatilgan usullarda ham mavjud bo'lishi mumkin.
