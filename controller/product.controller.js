@@ -121,3 +121,19 @@ exports.archiveProduct = async (req, res) => {
         res.status(500).send('Server xatosi');
     }
 };
+
+exports.checkToken = (req, res) => {
+    const token = req.headers.authorization?.split(' ')[1];
+    const secretKey = 'banan';
+
+    if (!token) {
+        return res.status(401).json({ message: 'Token topilmadi' });
+    }
+
+    try {
+        const decoded = jwt.verify(token, secretKey);
+        return res.status(200).json({ role: decoded.role });
+    } catch (err) {
+        return res.status(401).json({ message: 'Token yaroqsiz' });
+    }
+};
