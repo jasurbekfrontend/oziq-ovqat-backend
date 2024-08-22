@@ -20,6 +20,14 @@ exports.getProducts = async (req, res) => {
         res.status(500).send('Server xatosi');
     }
 }
+exports.getHisobots = async (req, res) => {
+    try {
+        const items = await ArchivedProductsModel.find();
+        res.json(items);
+    } catch (err) {
+        res.status(500).send('Server xatosi');
+    }
+}
 
 
 

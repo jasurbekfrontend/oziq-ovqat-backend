@@ -13,5 +13,6 @@ router.get('/products/:id', productController.getProductById);
 
 
 router.post('/sell', productController.sellProduct);
+router.get('/hisobots', productController.getHisobots);
 
 module.exports = router;
