@@ -24,14 +24,19 @@ exports.getProducts = async (req, res) => {
 exports.loginAdmin = async (req, res) => {
     const { login, password } = req.body;
 
+    let role;
     if (login === 'admin' && password === 'admin') {
-        const secretKey = 'banan';
-        const token = jwt.sign({ role: 'admin' }, secretKey, { expiresIn: '7d' });
-
-        return res.status(200).json({ token });
+        role = 'admin';
+    } else if (login === 'user' && password === 'user') {
+        role = 'user';
     } else {
         return res.status(401).json({ message: 'Login yoki parol noto\'g\'ri' });
     }
+
+    const secretKey = 'banan';
+    const token = jwt.sign({ role }, secretKey, { expiresIn: '7d' });
+
+    return res.status(200).json({ token });
 };
 
 // Mahsulotni o\'chirish
