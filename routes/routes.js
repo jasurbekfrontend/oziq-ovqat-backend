@@ -12,6 +12,6 @@ router.put('/products/:id', productController.editProduct);
 router.get('/products/:id', productController.getProductById);
 
 
-router.post('/archive', productController.archiveProduct);
+router.post('/sell', productController.sellProduct);
 
 module.exports = router;
