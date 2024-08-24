@@ -8,7 +8,7 @@ exports.createProduct = async (req, res) => {
         const allProducts = await ProductModel.find();
 
         const item = await newItem.save();
-        res.json(item, allProducts);
+        res.json({item, allProducts});
     } catch (err) {
         res.status(500).send('Server xatosi');
     }
