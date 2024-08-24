@@ -56,8 +56,9 @@ exports.editProduct = async (req, res) => {
         if (!updatedItem) {
             return res.status(404).json({ message: 'Mahsulot topilmadi' });
         }
+        const allProducts = await ProductModel.find();
 
-        res.json({ message: 'Mahsulot muvaffaqiyatli yangilandi', updatedItem });
+        res.json({ message: 'Mahsulot muvaffaqiyatli yangilandi', updatedItem, allProducts });
     } catch (err) {
         res.status(500).send('Server xatosi');
     }
