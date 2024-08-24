@@ -5,8 +5,10 @@ const ArchivedProductsModel = require('../model/archivedProducts.model');
 exports.createProduct = async (req, res) => {
     try {
         const newItem = new ProductModel(req.body);
+        const allProducts = await ProductModel.find();
+
         const item = await newItem.save();
-        res.json(item);
+        res.json(item, allProducts);
     } catch (err) {
         res.status(500).send('Server xatosi');
     }
@@ -36,12 +38,13 @@ exports.deleteProduct = async (req, res) => {
     try {
         const { id } = req.params;
         const deletedItem = await ProductModel.findByIdAndDelete(id);
+        const allProducts = await ProductModel.find();
 
         if (!deletedItem) {
             return res.status(404).json({ message: 'Mahsulot topilmadi' });
         }
 
-        res.json({ message: 'Mahsulot muvaffaqiyatli ochirildi', deletedItem });
+        res.json({ message: 'Mahsulot muvaffaqiyatli ochirildi', deletedItem, allProducts });
     } catch (err) {
         res.status(500).send('Server xatosi');
     }
